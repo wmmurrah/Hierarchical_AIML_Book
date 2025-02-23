@@ -3,7 +3,7 @@ title: "Logistic, Gompertz, and Richards Growth Models: Understanding Theoretica
 ---
 
 ## Overview
-This tutorial provides a hands-on approach to modeling growth curves using logistic, Gompertz, and Richards functions, focusing on the interpretability of theoretical parameters such as the asymptote, inflection point, growth rate, and shape parameter. The tutorial is structured in parallel for R (using the brms package) and Python (using PyMC3 and TensorFlow Probability) to facilitate learning across both programming environments.
+This chapter provides a hands-on approach to modeling growth curves using logistic, Gompertz, and Richards functions, focusing on the interpretability of theoretical parameters such as the asymptote, inflection point, growth rate, and shape parameter. The chapter is structured in parallel for R (using the brms package) and Python (using PyMC3 and TensorFlow Probability) to facilitate learning across both programming environments.
 
 ## Objectives
 1. Understand the theoretical background and functional form equations for logistic, Gompertz, and Richards curves.
@@ -12,7 +12,7 @@ This tutorial provides a hands-on approach to modeling growth curves using logis
 4. Compare models using Bayesian model comparison techniques.
 5. Extend analyses to Gaussian Processes and Neural Networks while retaining interpretability.
 
-## Structure of the Tutorial
+## Structure of the Chapter
 1. **Introduction and Theoretical Background**
 2. **Data Preparation and Exploration**
 3. **Logistic Growth Modeling**
@@ -43,7 +43,7 @@ Educational disparities in academic achievement are a persistent issue with far-
 The Early Childhood Longitudinal Study Kindergarten Class (ECLS-K) dataset provides a rich source of longitudinal data to investigate these issues. By modeling growth trajectories in academic achievement, researchers can identify critical developmental periods and examine how factors such as socioeconomic status (SES) and race influence growth parameters. In this context, SES and race serve as proxies for access to resources and exposure to societal factors, including school quality, neighborhood environment, and family support systems.
 
 ### Research Questions
-This tutorial is motivated by the following research questions:
+This chapter is motivated by the following research questions:
 - How do academic achievement trajectories differ by SES and race?
 - Are there gender differences in academic achievement trajectories??
 - How do academic achievement trajectories differ by SES and race?
@@ -60,7 +60,7 @@ Functional form models such as logistic, Gompertz, and Richards curves provide a
 ### Theoretical and Practical Implications
 Using functional form models not only enhances interpretability but also supports theoretical development by linking empirical findings to educational and cognitive development theories. For example, differences in inflection points may indicate developmental milestones influenced by resource access or educational quality, while variations in asymptotes may reflect systemic inequalities. Additionally, the parametric nature of these models facilitates cross-study comparisons, enabling cumulative knowledge building.
 
-By focusing on functional form models, this tutorial aims to provide researchers with tools that offer both flexibility in modeling nonlinear growth and interpretability essential for informing educational policy and practice.
+By focusing on functional form models, this chapter aims to provide researchers with tools that offer both flexibility in modeling nonlinear growth and interpretability essential for informing educational policy and practice.
 
 ### Overview of Nonlinear Modeling Methods
 Nonlinear modeling is a powerful approach to understanding complex growth patterns and developmental trajectories. Traditional linear models are often inadequate for capturing the dynamic, non-constant rates of change observed in natural phenomena, such as cognitive development and academic achievement. To address this, various nonlinear modeling techniques have been developed, ranging from spline models and polynomial regression to more flexible machine learning approaches, such as neural networks and Gaussian processes.
@@ -75,7 +75,7 @@ Unlike purely data-driven approaches, functional form models like the logistic, 
 ### Interoperability and Implications for Theory Development
 A key advantage of using functional form models is the interoperability of their parameters across different studies and populations. For example, comparing the inflection point across demographic groups provides insights into differences in the timing of developmental milestones. This interpretability fosters theoretical advancements, enabling researchers to link empirical findings to cognitive and educational theories. Additionally, the use of parametric functional forms facilitates replication and comparison across studies, contributing to a cumulative body of knowledge.
 
-By focusing on logistic, Gompertz, and Richards curves, these tutorials aim to equip researchers with tools that offer both flexibility in modeling nonlinear growth and interpretability crucial for theory development.
+By focusing on logistic, Gompertz, and Richards curves, this chapter aims to equip researchers with tools that offer both flexibility in modeling nonlinear growth and interpretability crucial for theory development.
 ### The Logistic Curve
 - Equation: \( y(t) = \frac{\alpha}{1 + \exp(-\beta (t - \gamma))} \)
 - Parameters:
