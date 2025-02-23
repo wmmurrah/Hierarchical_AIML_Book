@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -163,8 +192,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#overview-of-nonlinear-modeling-methods" id="toc-overview-of-nonlinear-modeling-methods" class="nav-link" data-scroll-target="#overview-of-nonlinear-modeling-methods"><span class="header-section-number">3.5.5</span> Overview of Nonlinear Modeling Methods</a></li>
   <li><a href="#why-focus-on-functional-form-models" id="toc-why-focus-on-functional-form-models" class="nav-link" data-scroll-target="#why-focus-on-functional-form-models"><span class="header-section-number">3.5.6</span> Why Focus on Functional Form Models?</a></li>
   <li><a href="#interoperability-and-implications-for-theory-development" id="toc-interoperability-and-implications-for-theory-development" class="nav-link" data-scroll-target="#interoperability-and-implications-for-theory-development"><span class="header-section-number">3.5.7</span> Interoperability and Implications for Theory Development</a></li>
-  <li><a href="#the-gompertz-curve" id="toc-the-gompertz-curve" class="nav-link" data-scroll-target="#the-gompertz-curve"><span class="header-section-number">3.5.8</span> The Gompertz Curve</a></li>
-  <li><a href="#the-richards-curve" id="toc-the-richards-curve" class="nav-link" data-scroll-target="#the-richards-curve"><span class="header-section-number">3.5.9</span> The Richards Curve</a></li>
+  <li><a href="#the-logistic-curve" id="toc-the-logistic-curve" class="nav-link" data-scroll-target="#the-logistic-curve"><span class="header-section-number">3.5.8</span> The Logistic Curve</a></li>
+  <li><a href="#the-gompertz-curve" id="toc-the-gompertz-curve" class="nav-link" data-scroll-target="#the-gompertz-curve"><span class="header-section-number">3.5.9</span> The Gompertz Curve</a></li>
+  <li><a href="#the-richards-curve" id="toc-the-richards-curve" class="nav-link" data-scroll-target="#the-richards-curve"><span class="header-section-number">3.5.10</span> The Richards Curve</a></li>
   </ul></li>
   <li><a href="#part-2-data-preparation-and-exploration" id="toc-part-2-data-preparation-and-exploration" class="nav-link" data-scroll-target="#part-2-data-preparation-and-exploration"><span class="header-section-number">3.6</span> Part 2: Data Preparation and Exploration</a>
   <ul class="collapse">
@@ -253,7 +283,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="research-questions" class="level3" data-number="3.5.2">
 <h3 data-number="3.5.2" class="anchored" data-anchor-id="research-questions"><span class="header-section-number">3.5.2</span> Research Questions</h3>
-<p>This chapter is motivated by the following research questions: - How do academic achievement trajectories differ by SES and race? - Are there gender differences in academic achievement trajectories?? - How do academic achievement trajectories differ by SES and race? - When do the most rapid changes in academic achievement occur for different demographic groups? - Do students from different SES or racial backgrounds reach different levels of achievement asymptotically?</p>
+<p>This chapter is motivated by the following research questions:<br>
+- How do academic achievement trajectories differ by SES and race?<br>
+- Are there gender differences in academic achievement trajectories?<br>
+- How do academic achievement trajectories differ by SES and race?<br>
+- When do the most rapid changes in academic achievement occur for different demographic groups?<br>
+- Do students from different SES or racial backgrounds reach different levels of achievement asymptotically?</p>
 </section>
 <section id="why-use-functional-form-models" class="level3" data-number="3.5.3">
 <h3 data-number="3.5.3" class="anchored" data-anchor-id="why-use-functional-form-models"><span class="header-section-number">3.5.3</span> Why Use Functional Form Models?</h3>
@@ -277,30 +312,55 @@ ul.task-list li input[type="checkbox"] {
 <section id="interoperability-and-implications-for-theory-development" class="level3" data-number="3.5.7">
 <h3 data-number="3.5.7" class="anchored" data-anchor-id="interoperability-and-implications-for-theory-development"><span class="header-section-number">3.5.7</span> Interoperability and Implications for Theory Development</h3>
 <p>A key advantage of using functional form models is the interoperability of their parameters across different studies and populations. For example, comparing the inflection point across demographic groups provides insights into differences in the timing of developmental milestones. This interpretability fosters theoretical advancements, enabling researchers to link empirical findings to cognitive and educational theories. Additionally, the use of parametric functional forms facilitates replication and comparison across studies, contributing to a cumulative body of knowledge.</p>
-<p>By focusing on logistic, Gompertz, and Richards curves, this chapter aims to equip researchers with tools that offer both flexibility in modeling nonlinear growth and interpretability crucial for theory development. ### The Logistic Curve - Equation: ( y(t) = ) - Parameters: - ( ): Asymptote (Maximum achievement level) - ( ): Growth rate - ( ): Inflection point (Timing of most rapid development)</p>
+<p>By focusing on logistic, Gompertz, and Richards curves, this chapter aims to equip researchers with tools that offer both flexibility in modeling nonlinear growth and interpretability crucial for theory development.</p>
 </section>
-<section id="the-gompertz-curve" class="level3" data-number="3.5.8">
-<h3 data-number="3.5.8" class="anchored" data-anchor-id="the-gompertz-curve"><span class="header-section-number">3.5.8</span> The Gompertz Curve</h3>
+<section id="the-logistic-curve" class="level3" data-number="3.5.8">
+<h3 data-number="3.5.8" class="anchored" data-anchor-id="the-logistic-curve"><span class="header-section-number">3.5.8</span> The Logistic Curve</h3>
 <ul>
-<li>Equation: ( y(t) = (-(-(t - ))) )</li>
+<li>Equation:</li>
+</ul>
+<p><span class="math display">\[
+y(t) = \frac{\alpha}{1 + \exp(-\beta (t - \gamma))}
+\]</span></p>
+<ul>
 <li>Parameters:
 <ul>
-<li>( ): Asymptote</li>
-<li>( ): Growth rate</li>
-<li>( ): Inflection point</li>
+<li><span class="math inline">\(\alpha\)</span>: Asymptote (Maximum achievement level)<br>
+</li>
+<li><span class="math inline">\(\beta\)</span>: Growth rate</li>
+<li><span class="math inline">\(\gamma\)</span>: Inflection point (Timing of most rapid development)</li>
 </ul></li>
 </ul>
 </section>
-<section id="the-richards-curve" class="level3" data-number="3.5.9">
-<h3 data-number="3.5.9" class="anchored" data-anchor-id="the-richards-curve"><span class="header-section-number">3.5.9</span> The Richards Curve</h3>
+<section id="the-gompertz-curve" class="level3" data-number="3.5.9">
+<h3 data-number="3.5.9" class="anchored" data-anchor-id="the-gompertz-curve"><span class="header-section-number">3.5.9</span> The Gompertz Curve</h3>
 <ul>
-<li>Equation: ( y(t) = )</li>
+<li>Equation:</li>
+</ul>
+<p><span class="math display">\[
+y(t) = \alpha \exp(-\exp(-\beta (t - \gamma)))
+\]</span></p>
+<ul>
 <li>Parameters:
 <ul>
-<li>( ): Asymptote</li>
-<li>( ): Growth rate</li>
-<li>( ): Inflection point</li>
-<li>( ): Shape parameter (Asymmetry)</li>
+<li><span class="math inline">\(\alpha\)</span>: Asymptote</li>
+<li><span class="math inline">\(\beta\)</span>: Growth rate</li>
+<li><span class="math inline">\(\gamma\)</span>: Inflection point</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-richards-curve" class="level3" data-number="3.5.10">
+<h3 data-number="3.5.10" class="anchored" data-anchor-id="the-richards-curve"><span class="header-section-number">3.5.10</span> The Richards Curve</h3>
+<ul>
+<li><p>Equation: <span class="math display">\[
+y(t) = \frac{\alpha}{(1 + \delta \exp(-\beta (t - \gamma)))^{\frac{1}{\delta}}}
+\]</span></p></li>
+<li><p>Parameters:</p>
+<ul>
+<li><span class="math inline">\(\alpha\)</span>: Asymptote</li>
+<li><span class="math inline">\(\beta\)</span>: Growth rate</li>
+<li><span class="math inline">\(\gamma\)</span>: Inflection point</li>
+<li><span class="math inline">\(\delta\)</span>: Shape parameter (Asymmetry)</li>
 </ul></li>
 </ul>
 <hr>

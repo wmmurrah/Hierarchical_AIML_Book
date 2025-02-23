@@ -1,0 +1,112 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Hierarchical_AIML_Book",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "Item X\nItem Y\nItem Z\n\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida eu erat et fring. Morbi congue augue vel eros ullamcorper, eget convallis tortor sagittis. Fusce sodales viverra mauris a fringilla. Donec feugiat, justo eu blandit placerat, enim dui volutpat turpis, eu dictum lectus urna eu urna. Mauris sed massa ornare, interdum ipsum a, semper massa.\n\n\n\n\n\n\n\n\n\nsequenceDiagram\n  participant Alice\n  participant Bob\n  Alice-&gt;&gt;John: Hello John, how are you?\n  loop Healthcheck\n    John-&gt;&gt;John: Fight against hypochondria\n  end\n  Note right of John: Rational thoughts &lt;br/&gt;prevail!\n  John--&gt;&gt;Alice: Great!\n  John-&gt;&gt;Bob: How about you?\n  Bob--&gt;&gt;John: Jolly good!\n\n\n\n\n\n\n\n\n\n\n\n\n\nG\n\n\n\nrun\n\nrun\n\n\n\nintr\n\nintr\n\n\n\nrun--intr\n\n\n\n\nkernel\n\nkernel\n\n\n\nrun--kernel\n\n\n\n\nrunbl\n\nrunbl\n\n\n\nintr--runbl\n\n\n\n\nrunbl--run\n\n\n\n\nzombie\n\nzombie\n\n\n\nkernel--zombie\n\n\n\n\nsleep\n\nsleep\n\n\n\nkernel--sleep\n\n\n\n\nrunmem\n\nrunmem\n\n\n\nkernel--runmem\n\n\n\n\nsleep--runmem\n\n\n\n\nswap\n\nswap\n\n\n\nsleep--swap\n\n\n\n\nrunswap\n\nrunswap\n\n\n\nswap--runswap\n\n\n\n\nrunswap--runmem\n\n\n\n\nnew\n\nnew\n\n\n\nrunswap--new\n\n\n\n\nnew--runmem",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "nonlinear_intro.html",
+    "href": "nonlinear_intro.html",
+    "title": "3  Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters",
+    "section": "",
+    "text": "3.1 Overview\nThis chapter provides a hands-on approach to modeling growth curves using logistic, Gompertz, and Richards functions, focusing on the interpretability of theoretical parameters such as the asymptote, inflection point, growth rate, and shape parameter. The chapter is structured in parallel for R (using the brms package) and Python (using PyMC3 and TensorFlow Probability) to facilitate learning across both programming environments.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "nonlinear_intro.html#objectives",
+    "href": "nonlinear_intro.html#objectives",
+    "title": "3  Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters",
+    "section": "3.2 Objectives",
+    "text": "3.2 Objectives\n\nUnderstand the theoretical background and functional form equations for logistic, Gompertz, and Richards curves.\nLearn how to specify, fit, and interpret nonlinear growth models in R and Python.\nExplore differences in growth parameters by demographic groups using hierarchical modeling.\nCompare models using Bayesian model comparison techniques.\nExtend analyses to Gaussian Processes and Neural Networks while retaining interpretability.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "nonlinear_intro.html#structure-of-the-chapter",
+    "href": "nonlinear_intro.html#structure-of-the-chapter",
+    "title": "3  Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters",
+    "section": "3.3 Structure of the Chapter",
+    "text": "3.3 Structure of the Chapter\n\nIntroduction and Theoretical Background\nData Preparation and Exploration\nLogistic Growth Modeling\nGompertz Growth Modeling\nRichards Curve Modeling\nComparison and Interpretation\nExtensions: Nonparametric and Neural Networks\nConclusions and Insights\nReferences and Further Reading",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "nonlinear_intro.html#requirements",
+    "href": "nonlinear_intro.html#requirements",
+    "title": "3  Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters",
+    "section": "3.4 Requirements",
+    "text": "3.4 Requirements\n\n3.4.1 R Packages\n\ntidyverse, data.table, ggplot2, EdSurvey, mice\nbrms, loo, bayesplot, cmdstanr\n\n\n\n3.4.2 Python Packages\n\npandas, numpy, matplotlib, seaborn\npymc3, arviz, tensorflow-probability\nOptional for Advanced Modeling: pyro-ppl, gpytorch",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "nonlinear_intro.html#part-1-introduction-and-theoretical-background",
+    "href": "nonlinear_intro.html#part-1-introduction-and-theoretical-background",
+    "title": "3  Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters",
+    "section": "3.5 Part 1: Introduction and Theoretical Background",
+    "text": "3.5 Part 1: Introduction and Theoretical Background\n\n3.5.1 Motivating Example: Educational Disparities and the ECLS-K Dataset\nEducational disparities in academic achievement are a persistent issue with far-reaching implications for economic and societal outcomes. Students from lower socioeconomic backgrounds and marginalized racial groups often face systemic disadvantages, resulting in achievement gaps that influence lifelong opportunities, including access to higher education, employment prospects, and income potential. Understanding and intervening in educational systems to alleviate these disparities requires a nuanced examination of how academic growth unfolds across different demographic groups.\nThe Early Childhood Longitudinal Study Kindergarten Class (ECLS-K) dataset provides a rich source of longitudinal data to investigate these issues. By modeling growth trajectories in academic achievement, researchers can identify critical developmental periods and examine how factors such as socioeconomic status (SES) and race influence growth parameters. In this context, SES and race serve as proxies for access to resources and exposure to societal factors, including school quality, neighborhood environment, and family support systems.\n\n\n3.5.2 Research Questions\nThis chapter is motivated by the following research questions:\n- How do academic achievement trajectories differ by SES and race?\n- Are there gender differences in academic achievement trajectories?\n- How do academic achievement trajectories differ by SES and race?\n- When do the most rapid changes in academic achievement occur for different demographic groups?\n- Do students from different SES or racial backgrounds reach different levels of achievement asymptotically?\n\n\n3.5.3 Why Use Functional Form Models?\nFunctional form models such as logistic, Gompertz, and Richards curves provide a powerful framework for examining these research questions. Unlike more flexible machine learning models, functional form models are interpretable, with parameters directly linked to theoretical constructs: - Inflection Point: The timing of the most rapid change, indicating critical periods for intervention. - Asymptote: The maximum achievement level, highlighting disparities in long-term educational outcomes. - Growth Rate: The speed of academic progress, providing insights into the effectiveness of educational environments. - Shape Parameter (Richards Curve): Captures asymmetry in growth, potentially revealing differences in early vs. late acceleration of achievement.\n\n\n3.5.4 Theoretical and Practical Implications\nUsing functional form models not only enhances interpretability but also supports theoretical development by linking empirical findings to educational and cognitive development theories. For example, differences in inflection points may indicate developmental milestones influenced by resource access or educational quality, while variations in asymptotes may reflect systemic inequalities. Additionally, the parametric nature of these models facilitates cross-study comparisons, enabling cumulative knowledge building.\nBy focusing on functional form models, this chapter aims to provide researchers with tools that offer both flexibility in modeling nonlinear growth and interpretability essential for informing educational policy and practice.\n\n\n3.5.5 Overview of Nonlinear Modeling Methods\nNonlinear modeling is a powerful approach to understanding complex growth patterns and developmental trajectories. Traditional linear models are often inadequate for capturing the dynamic, non-constant rates of change observed in natural phenomena, such as cognitive development and academic achievement. To address this, various nonlinear modeling techniques have been developed, ranging from spline models and polynomial regression to more flexible machine learning approaches, such as neural networks and Gaussian processes.\nSpline Models and Polynomial Regression: Spline models and polynomial regressions provide flexible tools for modeling nonlinearity by segmenting data into pieces or by fitting higher-order polynomials. However, these approaches often suffer from overfitting and lack clear interpretability of parameters related to growth processes.\nMachine Learning Approaches: Modern machine learning methods, such as Random Forests, Gradient Boosting Machines, and Deep Neural Networks, can capture complex nonlinear relationships and interactions. Although these models offer high predictive accuracy, they are often criticized for their lack of interpretability and theoretical grounding, particularly in educational and cognitive development research.\n\n\n3.5.6 Why Focus on Functional Form Models?\nUnlike purely data-driven approaches, functional form models like the logistic, Gompertz, and Richards curves offer a balance between flexibility and interpretability. These models are grounded in theoretical equations that describe growth processes with interpretable parameters, such as the asymptote (maximum level of achievement), the inflection point (timing of most rapid growth), and the growth rate (speed of development). Importantly, the parameters of these models are directly related to theoretical constructs, making them highly relevant for hypothesis testing and theory development.\n\n\n3.5.7 Interoperability and Implications for Theory Development\nA key advantage of using functional form models is the interoperability of their parameters across different studies and populations. For example, comparing the inflection point across demographic groups provides insights into differences in the timing of developmental milestones. This interpretability fosters theoretical advancements, enabling researchers to link empirical findings to cognitive and educational theories. Additionally, the use of parametric functional forms facilitates replication and comparison across studies, contributing to a cumulative body of knowledge.\nBy focusing on logistic, Gompertz, and Richards curves, this chapter aims to equip researchers with tools that offer both flexibility in modeling nonlinear growth and interpretability crucial for theory development.\n\n\n3.5.8 The Logistic Curve\n\nEquation:\n\n\\[\ny(t) = \\frac{\\alpha}{1 + \\exp(-\\beta (t - \\gamma))}\n\\]\n\nParameters:\n\n\\(\\alpha\\): Asymptote (Maximum achievement level)\n\n\\(\\beta\\): Growth rate\n\\(\\gamma\\): Inflection point (Timing of most rapid development)\n\n\n\n\n3.5.9 The Gompertz Curve\n\nEquation:\n\n\\[\ny(t) = \\alpha \\exp(-\\exp(-\\beta (t - \\gamma)))\n\\]\n\nParameters:\n\n\\(\\alpha\\): Asymptote\n\\(\\beta\\): Growth rate\n\\(\\gamma\\): Inflection point\n\n\n\n\n3.5.10 The Richards Curve\n\nEquation: \\[\ny(t) = \\frac{\\alpha}{(1 + \\delta \\exp(-\\beta (t - \\gamma)))^{\\frac{1}{\\delta}}}\n\\]\nParameters:\n\n\\(\\alpha\\): Asymptote\n\\(\\beta\\): Growth rate\n\\(\\gamma\\): Inflection point\n\\(\\delta\\): Shape parameter (Asymmetry)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "nonlinear_intro.html#part-2-data-preparation-and-exploration",
+    "href": "nonlinear_intro.html#part-2-data-preparation-and-exploration",
+    "title": "3  Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters",
+    "section": "3.6 Part 2: Data Preparation and Exploration",
+    "text": "3.6 Part 2: Data Preparation and Exploration\n\n3.6.1 Data Source\n\nUsing the 2011 ECLS-K dataset for educational achievement.\nData will be prepared and explored using:\n\nR: tidyverse, EdSurvey\nPython: pandas, seaborn\n\n\n\n\n3.6.2 Preprocessing Steps\n\nLoading data and initial exploration.\nHandling missing data using multiple imputation.\nVisualizing growth trajectories by demographic groups.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "nonlinear_intro.html#next-steps",
+    "href": "nonlinear_intro.html#next-steps",
+    "title": "3  Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters",
+    "section": "3.7 Next Steps",
+    "text": "3.7 Next Steps\nThe next section will cover detailed coding examples for Logistic Growth Modeling in both R and Python. Stay tuned!",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
+  }
+]
