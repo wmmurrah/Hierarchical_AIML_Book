@@ -51,11 +51,11 @@ This chapter is motivated by the following research questions:
 - Do students from different SES or racial backgrounds reach different levels of achievement asymptotically?  
 
 ### Why Use Functional Form Models?
-Functional form models such as logistic, Gompertz, and Richards curves provide a powerful framework for examining these research questions. Unlike more flexible machine learning models, functional form models are interpretable, with parameters directly linked to theoretical constructs:
-- **Inflection Point**: The timing of the most rapid change, indicating critical periods for intervention.
-- **Asymptote**: The maximum achievement level, highlighting disparities in long-term educational outcomes.
-- **Growth Rate**: The speed of academic progress, providing insights into the effectiveness of educational environments.
-- **Shape Parameter (Richards Curve)**: Captures asymmetry in growth, potentially revealing differences in early vs. late acceleration of achievement.
+Functional form models such as logistic, Gompertz, and Richards curves provide a powerful framework for examining these research questions. Unlike more flexible machine learning models, functional form models are interpretable, with parameters directly linked to theoretical constructs:  
+- **Inflection Point**: The timing of the most rapid change, indicating critical periods for intervention.  
+- **Asymptote**: The maximum achievement level, highlighting disparities in long-term educational outcomes.  
+- **Growth Rate**: The speed of academic progress, providing insights into the effectiveness of educational environments.  
+- **Shape Parameter (Richards Curve)**: Captures asymmetry in growth, potentially revealing differences in early vs. late acceleration of achievement.  
 
 ### Theoretical and Practical Implications
 Using functional form models not only enhances interpretability but also supports theoretical development by linking empirical findings to educational and cognitive development theories. For example, differences in inflection points may indicate developmental milestones influenced by resource access or educational quality, while variations in asymptotes may reflect systemic inequalities. Additionally, the parametric nature of these models facilitates cross-study comparisons, enabling cumulative knowledge building.

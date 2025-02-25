@@ -1,0 +1,865 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrreprt}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Hierarchical\_AIML\_Book},
+  pdfauthor={William M. Murrah},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Hierarchical\_AIML\_Book}
+\author{William M. Murrah}
+\date{2025-02-23}
+
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Preface}\label{preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+\markboth{Preface}{Preface}
+
+This is a Quarto book.
+
+To learn more about Quarto books visit
+\url{https://quarto.org/docs/books}.
+
+\bookmarksetup{startatroot}
+
+\chapter{Introduction}\label{introduction}
+
+\bookmarksetup{startatroot}
+
+\chapter{Summary}\label{summary}
+
+In summary, this book has no content whatsoever.
+
+\bookmarksetup{startatroot}
+
+\chapter{Logistic, Gompertz, and Richards Growth Models: Understanding
+Theoretical
+Parameters}\label{logistic-gompertz-and-richards-growth-models-understanding-theoretical-parameters}
+
+\section{Overview}\label{overview}
+
+This chapter provides a hands-on approach to modeling growth curves
+using logistic, Gompertz, and Richards functions, focusing on the
+interpretability of theoretical parameters such as the asymptote,
+inflection point, growth rate, and shape parameter. The chapter is
+structured in parallel for R (using the brms package) and Python (using
+PyMC3 and TensorFlow Probability) to facilitate learning across both
+programming environments.
+
+\section{Objectives}\label{objectives}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Understand the theoretical background and functional form equations
+  for logistic, Gompertz, and Richards curves.
+\item
+  Learn how to specify, fit, and interpret nonlinear growth models in R
+  and Python.
+\item
+  Explore differences in growth parameters by demographic groups using
+  hierarchical modeling.
+\item
+  Compare models using Bayesian model comparison techniques.
+\item
+  Extend analyses to Gaussian Processes and Neural Networks while
+  retaining interpretability.
+\end{enumerate}
+
+\section{Structure of the Chapter}\label{structure-of-the-chapter}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Introduction and Theoretical Background}
+\item
+  \textbf{Data Preparation and Exploration}
+\item
+  \textbf{Logistic Growth Modeling}
+\item
+  \textbf{Gompertz Growth Modeling}
+\item
+  \textbf{Richards Curve Modeling}
+\item
+  \textbf{Comparison and Interpretation}
+\item
+  \textbf{Extensions: Nonparametric and Neural Networks}
+\item
+  \textbf{Conclusions and Insights}
+\item
+  \textbf{References and Further Reading}
+\end{enumerate}
+
+\section{Requirements}\label{requirements}
+
+\subsection{R Packages}\label{r-packages}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{tidyverse}, \texttt{data.table}, \texttt{ggplot2},
+  \texttt{EdSurvey}, \texttt{mice}
+\item
+  \texttt{brms}, \texttt{loo}, \texttt{bayesplot}, \texttt{cmdstanr}
+\end{itemize}
+
+\subsection{Python Packages}\label{python-packages}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{pandas}, \texttt{numpy}, \texttt{matplotlib}, \texttt{seaborn}
+\item
+  \texttt{pymc3}, \texttt{arviz}, \texttt{tensorflow-probability}
+\item
+  Optional for Advanced Modeling: \texttt{pyro-ppl}, \texttt{gpytorch}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Part 1: Introduction and Theoretical
+Background}\label{part-1-introduction-and-theoretical-background}
+
+\subsection{Motivating Example: Educational Disparities and the ECLS-K
+Dataset}\label{motivating-example-educational-disparities-and-the-ecls-k-dataset}
+
+Educational disparities in academic achievement are a persistent issue
+with far-reaching implications for economic and societal outcomes.
+Students from lower socioeconomic backgrounds and marginalized racial
+groups often face systemic disadvantages, resulting in achievement gaps
+that influence lifelong opportunities, including access to higher
+education, employment prospects, and income potential. Understanding and
+intervening in educational systems to alleviate these disparities
+requires a nuanced examination of how academic growth unfolds across
+different demographic groups.
+
+The Early Childhood Longitudinal Study Kindergarten Class (ECLS-K)
+dataset provides a rich source of longitudinal data to investigate these
+issues. By modeling growth trajectories in academic achievement,
+researchers can identify critical developmental periods and examine how
+factors such as socioeconomic status (SES) and race influence growth
+parameters. In this context, SES and race serve as proxies for access to
+resources and exposure to societal factors, including school quality,
+neighborhood environment, and family support systems.
+
+\subsection{Research Questions}\label{research-questions}
+
+This chapter is motivated by the following research questions:\\
+- How do academic achievement trajectories differ by SES and race?\\
+- Are there gender differences in academic achievement trajectories?\\
+- How do academic achievement trajectories differ by SES and race?\\
+- When do the most rapid changes in academic achievement occur for
+different demographic groups?\\
+- Do students from different SES or racial backgrounds reach different
+levels of achievement asymptotically?
+
+\subsection{Why Use Functional Form
+Models?}\label{why-use-functional-form-models}
+
+Functional form models such as logistic, Gompertz, and Richards curves
+provide a powerful framework for examining these research questions.
+Unlike more flexible machine learning models, functional form models are
+interpretable, with parameters directly linked to theoretical
+constructs:\\
+- \textbf{Inflection Point}: The timing of the most rapid change,
+indicating critical periods for intervention.\\
+- \textbf{Asymptote}: The maximum achievement level, highlighting
+disparities in long-term educational outcomes.\\
+- \textbf{Growth Rate}: The speed of academic progress, providing
+insights into the effectiveness of educational environments.\\
+- \textbf{Shape Parameter (Richards Curve)}: Captures asymmetry in
+growth, potentially revealing differences in early vs.~late acceleration
+of achievement.
+
+\subsection{Theoretical and Practical
+Implications}\label{theoretical-and-practical-implications}
+
+Using functional form models not only enhances interpretability but also
+supports theoretical development by linking empirical findings to
+educational and cognitive development theories. For example, differences
+in inflection points may indicate developmental milestones influenced by
+resource access or educational quality, while variations in asymptotes
+may reflect systemic inequalities. Additionally, the parametric nature
+of these models facilitates cross-study comparisons, enabling cumulative
+knowledge building.
+
+By focusing on functional form models, this chapter aims to provide
+researchers with tools that offer both flexibility in modeling nonlinear
+growth and interpretability essential for informing educational policy
+and practice.
+
+\subsection{Overview of Nonlinear Modeling
+Methods}\label{overview-of-nonlinear-modeling-methods}
+
+Nonlinear modeling is a powerful approach to understanding complex
+growth patterns and developmental trajectories. Traditional linear
+models are often inadequate for capturing the dynamic, non-constant
+rates of change observed in natural phenomena, such as cognitive
+development and academic achievement. To address this, various nonlinear
+modeling techniques have been developed, ranging from spline models and
+polynomial regression to more flexible machine learning approaches, such
+as neural networks and Gaussian processes.
+
+\textbf{Spline Models and Polynomial Regression:} Spline models and
+polynomial regressions provide flexible tools for modeling nonlinearity
+by segmenting data into pieces or by fitting higher-order polynomials.
+However, these approaches often suffer from overfitting and lack clear
+interpretability of parameters related to growth processes.
+
+\textbf{Machine Learning Approaches:} Modern machine learning methods,
+such as Random Forests, Gradient Boosting Machines, and Deep Neural
+Networks, can capture complex nonlinear relationships and interactions.
+Although these models offer high predictive accuracy, they are often
+criticized for their lack of interpretability and theoretical grounding,
+particularly in educational and cognitive development research.
+
+\subsection{Why Focus on Functional Form
+Models?}\label{why-focus-on-functional-form-models}
+
+Unlike purely data-driven approaches, functional form models like the
+logistic, Gompertz, and Richards curves offer a balance between
+flexibility and interpretability. These models are grounded in
+theoretical equations that describe growth processes with interpretable
+parameters, such as the asymptote (maximum level of achievement), the
+inflection point (timing of most rapid growth), and the growth rate
+(speed of development). Importantly, the parameters of these models are
+directly related to theoretical constructs, making them highly relevant
+for hypothesis testing and theory development.
+
+\subsection{Interoperability and Implications for Theory
+Development}\label{interoperability-and-implications-for-theory-development}
+
+A key advantage of using functional form models is the interoperability
+of their parameters across different studies and populations. For
+example, comparing the inflection point across demographic groups
+provides insights into differences in the timing of developmental
+milestones. This interpretability fosters theoretical advancements,
+enabling researchers to link empirical findings to cognitive and
+educational theories. Additionally, the use of parametric functional
+forms facilitates replication and comparison across studies,
+contributing to a cumulative body of knowledge.
+
+By focusing on logistic, Gompertz, and Richards curves, this chapter
+aims to equip researchers with tools that offer both flexibility in
+modeling nonlinear growth and interpretability crucial for theory
+development.
+
+\subsection{The Logistic Curve}\label{the-logistic-curve}
+
+\begin{itemize}
+\tightlist
+\item
+  Equation:
+\end{itemize}
+
+\[
+y(t) = \frac{\alpha}{1 + \exp(-\beta (t - \gamma))}
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  Parameters:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\alpha\): Asymptote (Maximum achievement level)\\
+  \item
+    \(\beta\): Growth rate
+  \item
+    \(\gamma\): Inflection point (Timing of most rapid development)
+  \end{itemize}
+\end{itemize}
+
+\subsection{The Gompertz Curve}\label{the-gompertz-curve}
+
+\begin{itemize}
+\tightlist
+\item
+  Equation:
+\end{itemize}
+
+\[
+y(t) = \alpha \exp(-\exp(-\beta (t - \gamma)))
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  Parameters:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\alpha\): Asymptote
+  \item
+    \(\beta\): Growth rate
+  \item
+    \(\gamma\): Inflection point
+  \end{itemize}
+\end{itemize}
+
+\subsection{The Richards Curve}\label{the-richards-curve}
+
+\begin{itemize}
+\item
+  Equation: \[
+  y(t) = \frac{\alpha}{(1 + \delta \exp(-\beta (t - \gamma)))^{\frac{1}{\delta}}}
+  \]
+\item
+  Parameters:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\alpha\): Asymptote
+  \item
+    \(\beta\): Growth rate
+  \item
+    \(\gamma\): Inflection point
+  \item
+    \(\delta\): Shape parameter (Asymmetry)
+  \end{itemize}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Part 2: Data Preparation and
+Exploration}\label{part-2-data-preparation-and-exploration}
+
+\subsection{Data Source}\label{data-source}
+
+\begin{itemize}
+\tightlist
+\item
+  Using the 2011 ECLS-K dataset for educational achievement.
+\item
+  Data will be prepared and explored using:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{R}: \texttt{tidyverse}, \texttt{EdSurvey}
+  \item
+    \textbf{Python}: \texttt{pandas}, \texttt{seaborn}
+  \end{itemize}
+\end{itemize}
+
+\subsection{Preprocessing Steps}\label{preprocessing-steps}
+
+\begin{itemize}
+\tightlist
+\item
+  Loading data and initial exploration.
+\item
+  Handling missing data using multiple imputation.
+\item
+  Visualizing growth trajectories by demographic groups.
+\end{itemize}
+
+\section{Next Steps}\label{next-steps}
+
+The next section will cover detailed coding examples for Logistic Growth
+Modeling in both R and Python. Stay tuned!
+
+\bookmarksetup{startatroot}
+
+\chapter{Logistic Growth Modeling: Understanding Theoretical
+Parameters}\label{logistic-growth-modeling-understanding-theoretical-parameters}
+
+\section{Overview}\label{overview-1}
+
+This tutorial focuses on modeling growth curves using the Logistic
+function, emphasizing the interpretability of theoretical parameters
+such as the asymptote, inflection point, and growth rate. It builds on
+the foundational knowledge from the introductory tutorial on nonlinear
+growth models, with a hands-on approach for implementation in both R
+(using the brms package) and Python (using PyMC3).
+
+\section{Objectives}\label{objectives-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Understand the functional form and theoretical parameters of the
+  Logistic curve.
+\item
+  Specify, fit, and interpret Logistic growth models in R and Python.
+\item
+  Investigate differences in growth parameters by demographic groups,
+  including SES, race, and gender.
+\item
+  Compare models using Bayesian model comparison techniques and evaluate
+  model fit with posterior predictive checks.
+\end{enumerate}
+
+\section{Structure of the Tutorial}\label{structure-of-the-tutorial}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Introduction to the Logistic Curve}
+\item
+  \textbf{Model Specification}
+\item
+  \textbf{Implementation in R using brms}
+\item
+  \textbf{Implementation in Python using PyMC3}
+\item
+  \textbf{Parameter Interpretation and Visualization}
+\item
+  \textbf{Model Comparison and Diagnostics}
+\item
+  \textbf{Extensions and Advanced Topics}
+\item
+  \textbf{Conclusions and Insights}
+\item
+  \textbf{References and Further Reading}
+\end{enumerate}
+
+\section{Requirements}\label{requirements-1}
+
+\subsection{R Packages}\label{r-packages-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{tidyverse}, \texttt{ggplot2}
+\item
+  \texttt{brms}, \texttt{loo}, \texttt{bayesplot}, \texttt{cmdstanr}
+\end{itemize}
+
+\subsection{Python Packages}\label{python-packages-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{pandas}, \texttt{numpy}, \texttt{matplotlib}, \texttt{seaborn}
+\item
+  \texttt{pymc3}, \texttt{arviz}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Part 1: Introduction to the Logistic
+Curve}\label{part-1-introduction-to-the-logistic-curve}
+
+\subsection{Motivation and Context}\label{motivation-and-context}
+
+The Logistic growth curve is widely used in modeling growth processes,
+particularly in educational achievement and cognitive development, where
+growth accelerates rapidly before slowing as it approaches a maximum
+level (asymptote). In this context, the Logistic curve helps to
+understand important developmental milestones, critical periods for
+intervention, and long-term achievement potential.
+
+\subsection{Functional Form of the Logistic
+Curve}\label{functional-form-of-the-logistic-curve}
+
+\begin{itemize}
+\tightlist
+\item
+  Equation: ( y(t) = \frac{\alpha}{1 + \exp(-\beta (t - \gamma))} )
+\item
+  Parameters:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ( \alpha ): Asymptote (Maximum achievement level)
+  \item
+    ( \beta ): Growth rate
+  \item
+    ( \gamma ): Inflection point (Timing of most rapid development)
+  \end{itemize}
+\end{itemize}
+
+\subsection{Interpretability and Theoretical
+Implications}\label{interpretability-and-theoretical-implications}
+
+The Logistic curve provides interpretable parameters directly linked to
+theoretical constructs. For example: - The \textbf{inflection point}
+indicates the timing of the most rapid change, which can be used to
+identify critical developmental periods or windows of opportunity for
+educational interventions. - The \textbf{asymptote} represents the
+maximum potential achievement level, useful for examining educational
+disparities by demographic groups.
+
+\section{Part 2: Logistic Growth Model in R using
+brms}\label{part-2-logistic-growth-model-in-r-using-brms}
+
+\subsection{Data Preparation}\label{data-preparation}
+
+To model the logistic growth curve using the brms package in R, we first
+need to prepare the data. This example uses the 2011 ECLS-K dataset to
+examine academic achievement trajectories. We focus on demographic
+differences by SES, race, and gender.
+
+\subsection{Loading Required Packages}\label{loading-required-packages}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Install and load necessary packages}
+\FunctionTok{install.packages}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{, }\StringTok{"brms"}\NormalTok{, }\StringTok{"cmdstanr"}\NormalTok{, }\StringTok{"mice"}\NormalTok{))}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(brms)}
+\FunctionTok{library}\NormalTok{(cmdstanr)  }\CommentTok{\# Required backend for brms}
+\FunctionTok{library}\NormalTok{(mice)  }\CommentTok{\# For multiple imputation of missing data}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Data Preparation and
+Exploration}\label{data-preparation-and-exploration}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the dataset}
+\CommentTok{\# Assume the dataset is saved as \textquotesingle{}eclsk\_data.csv\textquotesingle{}}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{\textquotesingle{}eclsk\_data.csv\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Explore the data}
+\FunctionTok{str}\NormalTok{(data)}
+\FunctionTok{summary}\NormalTok{(data)}
+
+\CommentTok{\# Subset relevant variables}
+\NormalTok{selected\_vars }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"childid"}\NormalTok{, }\StringTok{"race"}\NormalTok{, }\StringTok{"sex"}\NormalTok{, }\StringTok{"ses"}\NormalTok{, }\StringTok{"age\_entry"}\NormalTok{, }\StringTok{"age\_test"}\NormalTok{, }\StringTok{"math\_score"}\NormalTok{)}
+\NormalTok{data\_subset }\OtherTok{\textless{}{-}}\NormalTok{ data[, selected\_vars]}
+
+\CommentTok{\# Handle missing data using multiple imputation}
+\NormalTok{imp\_data }\OtherTok{\textless{}{-}} \FunctionTok{mice}\NormalTok{(data\_subset, }\AttributeTok{m =} \DecValTok{5}\NormalTok{, }\AttributeTok{method =} \StringTok{\textquotesingle{}pmm\textquotesingle{}}\NormalTok{, }\AttributeTok{maxit =} \DecValTok{50}\NormalTok{, }\AttributeTok{seed =} \DecValTok{123}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Specifying the Logistic Growth
+Model}\label{specifying-the-logistic-growth-model}
+
+The logistic growth model is specified using a custom non-linear
+formula:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{logistic\_formula }\OtherTok{\textless{}{-}} \FunctionTok{bf}\NormalTok{(}
+\NormalTok{  math\_score }\SpecialCharTok{\textasciitilde{}}\NormalTok{ alpha }\SpecialCharTok{/}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+} \FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{beta }\SpecialCharTok{*}\NormalTok{ (age\_test }\SpecialCharTok{{-}}\NormalTok{ gamma))),}
+\NormalTok{  alpha }\SpecialCharTok{\textasciitilde{}} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ race }\SpecialCharTok{+}\NormalTok{ sex }\SpecialCharTok{+}\NormalTok{ ses }\SpecialCharTok{+}\NormalTok{ age\_entry,}
+\NormalTok{  beta }\SpecialCharTok{\textasciitilde{}} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ race }\SpecialCharTok{+}\NormalTok{ sex }\SpecialCharTok{+}\NormalTok{ ses,}
+\NormalTok{  gamma }\SpecialCharTok{\textasciitilde{}} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ race }\SpecialCharTok{+}\NormalTok{ sex }\SpecialCharTok{+}\NormalTok{ ses,}
+  \AttributeTok{nl =} \ConstantTok{TRUE}
+\NormalTok{)}
+
+\CommentTok{\# Priors for interpretability}
+\NormalTok{logistic\_priors }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \FunctionTok{prior}\NormalTok{(}\FunctionTok{normal}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{), }\AttributeTok{nlpar =} \StringTok{"alpha"}\NormalTok{),}
+  \FunctionTok{prior}\NormalTok{(}\FunctionTok{normal}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\AttributeTok{nlpar =} \StringTok{"beta"}\NormalTok{),}
+  \FunctionTok{prior}\NormalTok{(}\FunctionTok{normal}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{), }\AttributeTok{nlpar =} \StringTok{"gamma"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Fitting the Model}\label{fitting-the-model}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fit the model using brms}
+\NormalTok{fit\_logistic }\OtherTok{\textless{}{-}} \FunctionTok{brm}\NormalTok{(}
+  \AttributeTok{formula =}\NormalTok{ logistic\_formula,}
+  \AttributeTok{data =} \FunctionTok{complete}\NormalTok{(imp\_data, }\AttributeTok{action =} \DecValTok{1}\NormalTok{),  }\CommentTok{\# Use first imputed dataset}
+  \AttributeTok{family =} \FunctionTok{gaussian}\NormalTok{(),}
+  \AttributeTok{prior =}\NormalTok{ logistic\_priors,}
+  \AttributeTok{chains =} \DecValTok{4}\NormalTok{,}
+  \AttributeTok{iter =} \DecValTok{4000}\NormalTok{,}
+  \AttributeTok{cores =} \DecValTok{4}\NormalTok{,}
+  \AttributeTok{seed =} \DecValTok{123}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Model Diagnostics and Posterior
+Checks}\label{model-diagnostics-and-posterior-checks}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Model summary}
+\FunctionTok{summary}\NormalTok{(fit\_logistic)}
+
+\CommentTok{\# Trace plots for convergence diagnostics}
+\FunctionTok{plot}\NormalTok{(fit\_logistic)}
+
+\CommentTok{\# Posterior predictive checks}
+\FunctionTok{pp\_check}\NormalTok{(fit\_logistic)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Interpretation of
+Parameters}\label{interpretation-of-parameters}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Alpha (Asymptote)}: Maximum achievement level.
+\item
+  \textbf{Beta (Growth Rate)}: Speed of development.
+\item
+  \textbf{Gamma (Inflection Point)}: Timing of most rapid growth.
+\end{itemize}
+
+\subsection{Next Steps}\label{next-steps-1}
+
+The next section will cover implementation of the Logistic Growth Model
+in Python using PyMC3. Stay tuned! The next section will cover detailed
+coding examples for implementing the Logistic Growth Model in R using
+the brms package. Stay tuned!
+
+\bookmarksetup{startatroot}
+
+\chapter*{References}\label{references}
+\addcontentsline{toc}{chapter}{References}
+
+\markboth{References}{References}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{0}{1}
+\end{CSLReferences}
+
+
+
+
+\end{document}
