@@ -42,20 +42,20 @@ Educational disparities in academic achievement are a persistent issue with far-
 
 The Early Childhood Longitudinal Study Kindergarten Class (ECLS-K) dataset provides a rich source of longitudinal data to investigate these issues. By modeling growth trajectories in academic achievement, researchers can identify critical developmental periods and examine how factors such as socioeconomic status (SES) and race influence growth parameters. In this context, SES and race serve as proxies for access to resources and exposure to societal factors, including school quality, neighborhood environment, and family support systems.
 
-### Research Questions  
-This chapter is motivated by the following research questions:  
-- How do academic achievement trajectories differ by SES and race?  
-- Are there gender differences in academic achievement trajectories?  
-- How do academic achievement trajectories differ by SES and race?  
-- When do the most rapid changes in academic achievement occur for different demographic groups?  
-- Do students from different SES or racial backgrounds reach different levels of achievement asymptotically?  
+### Research Questions
+This chapter is motivated by the following research questions:
+- How do academic achievement trajectories differ by SES and race?
+- Are there gender differences in academic achievement trajectories?
+- How do academic achievement trajectories differ by SES and race?
+- When do the most rapid changes in academic achievement occur for different demographic groups?
+- Do students from different SES or racial backgrounds reach different levels of achievement asymptotically?
 
 ### Why Use Functional Form Models?
-Functional form models such as logistic, Gompertz, and Richards curves provide a powerful framework for examining these research questions. Unlike more flexible machine learning models, functional form models are interpretable, with parameters directly linked to theoretical constructs:  
-- **Inflection Point**: The timing of the most rapid change, indicating critical periods for intervention.  
-- **Asymptote**: The maximum achievement level, highlighting disparities in long-term educational outcomes.  
-- **Growth Rate**: The speed of academic progress, providing insights into the effectiveness of educational environments.  
-- **Shape Parameter (Richards Curve)**: Captures asymmetry in growth, potentially revealing differences in early vs. late acceleration of achievement.  
+Functional form models such as logistic, Gompertz, and Richards curves provide a powerful framework for examining these research questions. Unlike more flexible machine learning models, functional form models are interpretable, with parameters directly linked to theoretical constructs:
+- **Inflection Point**: The timing of the most rapid change, indicating critical periods for intervention.
+- **Asymptote**: The maximum achievement level, highlighting disparities in long-term educational outcomes.
+- **Growth Rate**: The speed of academic progress, providing insights into the effectiveness of educational environments.
+- **Shape Parameter (Richards Curve)**: Captures asymmetry in growth, potentially revealing differences in early vs. late acceleration of achievement.
 
 ### Theoretical and Practical Implications
 Using functional form models not only enhances interpretability but also supports theoretical development by linking empirical findings to educational and cognitive development theories. For example, differences in inflection points may indicate developmental milestones influenced by resource access or educational quality, while variations in asymptotes may reflect systemic inequalities. Additionally, the parametric nature of these models facilitates cross-study comparisons, enabling cumulative knowledge building.
@@ -78,35 +78,21 @@ A key advantage of using functional form models is the interoperability of their
 By focusing on logistic, Gompertz, and Richards curves, this chapter aims to equip researchers with tools that offer both flexibility in modeling nonlinear growth and interpretability crucial for theory development.
 
 ### The Logistic Curve
-- Equation: 
-
-$$
-y(t) = \frac{\alpha}{1 + \exp(-\beta (t - \gamma))}
-$$
-
+- Equation: $y(t) = \frac{\alpha}{1 + \exp(-\beta (t - \gamma))}$
 - Parameters:
-  - $\alpha$: Asymptote (Maximum achievement level)  
+  - $\alpha$: Asymptote (Maximum achievement level)
   - $\beta$: Growth rate
   - $\gamma$: Inflection point (Timing of most rapid development)
 
 ### The Gompertz Curve
-- Equation: 
-
-$$
-y(t) = \alpha \exp(-\exp(-\beta (t - \gamma)))
-$$
-
+- Equation: $y(t) = \alpha \exp(-\exp(-\beta (t - \gamma)))$
 - Parameters:
   - $\alpha$: Asymptote
   - $\beta$: Growth rate
   - $\gamma$: Inflection point
 
 ### The Richards Curve
-- Equation: 
-$$
-y(t) = \frac{\alpha}{(1 + \delta \exp(-\beta (t - \gamma)))^{\frac{1}{\delta}}}
-$$
-
+- Equation: $y(t) = \frac{\alpha}{\left(1 + \delta \exp(-\beta (t - \gamma))\right)^{\frac{1}{\delta}}}$
 - Parameters:
   - $\alpha$: Asymptote
   - $\beta$: Growth rate

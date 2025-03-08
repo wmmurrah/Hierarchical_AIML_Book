@@ -1,0 +1,132 @@
+[
+  {
+    "objectID": "nonlinear_intro.html",
+    "href": "nonlinear_intro.html",
+    "title": "3  Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters",
+    "section": "",
+    "text": "3.1 Overview\nThis chapter provides a hands-on approach to modeling growth curves using logistic, Gompertz, and Richards functions, focusing on the interpretability of theoretical parameters such as the asymptote, inflection point, growth rate, and shape parameter. The chapter is structured in parallel for R (using the brms package) and Python (using PyMC3 and TensorFlow Probability) to facilitate learning across both programming environments.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "nonlinear_intro.html#objectives",
+    "href": "nonlinear_intro.html#objectives",
+    "title": "3  Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters",
+    "section": "3.2 Objectives",
+    "text": "3.2 Objectives\n\nUnderstand the theoretical background and functional form equations for logistic, Gompertz, and Richards curves.\nLearn how to specify, fit, and interpret nonlinear growth models in R and Python.\nExplore differences in growth parameters by demographic groups using hierarchical modeling.\nCompare models using Bayesian model comparison techniques.\nExtend analyses to Gaussian Processes and Neural Networks while retaining interpretability.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "nonlinear_intro.html#structure-of-the-chapter",
+    "href": "nonlinear_intro.html#structure-of-the-chapter",
+    "title": "3  Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters",
+    "section": "3.3 Structure of the Chapter",
+    "text": "3.3 Structure of the Chapter\n\nIntroduction and Theoretical Background\nData Preparation and Exploration\nLogistic Growth Modeling\nGompertz Growth Modeling\nRichards Curve Modeling\nComparison and Interpretation\nExtensions: Nonparametric and Neural Networks\nConclusions and Insights\nReferences and Further Reading",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "nonlinear_intro.html#requirements",
+    "href": "nonlinear_intro.html#requirements",
+    "title": "3  Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters",
+    "section": "3.4 Requirements",
+    "text": "3.4 Requirements\n\n3.4.1 R Packages\n\ntidyverse, data.table, ggplot2, EdSurvey, mice\nbrms, loo, bayesplot, cmdstanr\n\n\n\n3.4.2 Python Packages\n\npandas, numpy, matplotlib, seaborn\npymc3, arviz, tensorflow-probability\nOptional for Advanced Modeling: pyro-ppl, gpytorch",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "nonlinear_intro.html#part-1-introduction-and-theoretical-background",
+    "href": "nonlinear_intro.html#part-1-introduction-and-theoretical-background",
+    "title": "3  Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters",
+    "section": "3.5 Part 1: Introduction and Theoretical Background",
+    "text": "3.5 Part 1: Introduction and Theoretical Background\n\n3.5.1 Motivating Example: Educational Disparities and the ECLS-K Dataset\nEducational disparities in academic achievement are a persistent issue with far-reaching implications for economic and societal outcomes. Students from lower socioeconomic backgrounds and marginalized racial groups often face systemic disadvantages, resulting in achievement gaps that influence lifelong opportunities, including access to higher education, employment prospects, and income potential. Understanding and intervening in educational systems to alleviate these disparities requires a nuanced examination of how academic growth unfolds across different demographic groups.\nThe Early Childhood Longitudinal Study Kindergarten Class (ECLS-K) dataset provides a rich source of longitudinal data to investigate these issues. By modeling growth trajectories in academic achievement, researchers can identify critical developmental periods and examine how factors such as socioeconomic status (SES) and race influence growth parameters. In this context, SES and race serve as proxies for access to resources and exposure to societal factors, including school quality, neighborhood environment, and family support systems.\n\n\n3.5.2 Research Questions\nThis chapter is motivated by the following research questions: - How do academic achievement trajectories differ by SES and race? - Are there gender differences in academic achievement trajectories? - How do academic achievement trajectories differ by SES and race? - When do the most rapid changes in academic achievement occur for different demographic groups? - Do students from different SES or racial backgrounds reach different levels of achievement asymptotically?\n\n\n3.5.3 Why Use Functional Form Models?\nFunctional form models such as logistic, Gompertz, and Richards curves provide a powerful framework for examining these research questions. Unlike more flexible machine learning models, functional form models are interpretable, with parameters directly linked to theoretical constructs: - Inflection Point: The timing of the most rapid change, indicating critical periods for intervention. - Asymptote: The maximum achievement level, highlighting disparities in long-term educational outcomes. - Growth Rate: The speed of academic progress, providing insights into the effectiveness of educational environments. - Shape Parameter (Richards Curve): Captures asymmetry in growth, potentially revealing differences in early vs. late acceleration of achievement.\n\n\n3.5.4 Theoretical and Practical Implications\nUsing functional form models not only enhances interpretability but also supports theoretical development by linking empirical findings to educational and cognitive development theories. For example, differences in inflection points may indicate developmental milestones influenced by resource access or educational quality, while variations in asymptotes may reflect systemic inequalities. Additionally, the parametric nature of these models facilitates cross-study comparisons, enabling cumulative knowledge building.\nBy focusing on functional form models, this chapter aims to provide researchers with tools that offer both flexibility in modeling nonlinear growth and interpretability essential for informing educational policy and practice.\n\n\n3.5.5 Overview of Nonlinear Modeling Methods\nNonlinear modeling is a powerful approach to understanding complex growth patterns and developmental trajectories. Traditional linear models are often inadequate for capturing the dynamic, non-constant rates of change observed in natural phenomena, such as cognitive development and academic achievement. To address this, various nonlinear modeling techniques have been developed, ranging from spline models and polynomial regression to more flexible machine learning approaches, such as neural networks and Gaussian processes.\nSpline Models and Polynomial Regression: Spline models and polynomial regressions provide flexible tools for modeling nonlinearity by segmenting data into pieces or by fitting higher-order polynomials. However, these approaches often suffer from overfitting and lack clear interpretability of parameters related to growth processes.\nMachine Learning Approaches: Modern machine learning methods, such as Random Forests, Gradient Boosting Machines, and Deep Neural Networks, can capture complex nonlinear relationships and interactions. Although these models offer high predictive accuracy, they are often criticized for their lack of interpretability and theoretical grounding, particularly in educational and cognitive development research.\n\n\n3.5.6 Why Focus on Functional Form Models?\nUnlike purely data-driven approaches, functional form models like the logistic, Gompertz, and Richards curves offer a balance between flexibility and interpretability. These models are grounded in theoretical equations that describe growth processes with interpretable parameters, such as the asymptote (maximum level of achievement), the inflection point (timing of most rapid growth), and the growth rate (speed of development). Importantly, the parameters of these models are directly related to theoretical constructs, making them highly relevant for hypothesis testing and theory development.\n\n\n3.5.7 Interoperability and Implications for Theory Development\nA key advantage of using functional form models is the interoperability of their parameters across different studies and populations. For example, comparing the inflection point across demographic groups provides insights into differences in the timing of developmental milestones. This interpretability fosters theoretical advancements, enabling researchers to link empirical findings to cognitive and educational theories. Additionally, the use of parametric functional forms facilitates replication and comparison across studies, contributing to a cumulative body of knowledge.\nBy focusing on logistic, Gompertz, and Richards curves, this chapter aims to equip researchers with tools that offer both flexibility in modeling nonlinear growth and interpretability crucial for theory development.\n\n\n3.5.8 The Logistic Curve\n\nEquation: \\(y(t) = \\frac{\\alpha}{1 + \\exp(-\\beta (t - \\gamma))}\\)\nParameters:\n\n\\(\\alpha\\): Asymptote (Maximum achievement level)\n\\(\\beta\\): Growth rate\n\\(\\gamma\\): Inflection point (Timing of most rapid development)\n\n\n\n\n3.5.9 The Gompertz Curve\n\nEquation: \\(y(t) = \\alpha \\exp(-\\exp(-\\beta (t - \\gamma)))\\)\nParameters:\n\n\\(\\alpha\\): Asymptote\n\\(\\beta\\): Growth rate\n\\(\\gamma\\): Inflection point\n\n\n\n\n3.5.10 The Richards Curve\n\nEquation: \\(y(t) = \\frac{\\alpha}{\\left(1 + \\delta \\exp(-\\beta (t - \\gamma))\\right)^{\\frac{1}{\\delta}}}\\)\nParameters:\n\n\\(\\alpha\\): Asymptote\n\\(\\beta\\): Growth rate\n\\(\\gamma\\): Inflection point\n\\(\\delta\\): Shape parameter (Asymmetry)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "nonlinear_intro.html#part-2-data-preparation-and-exploration",
+    "href": "nonlinear_intro.html#part-2-data-preparation-and-exploration",
+    "title": "3  Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters",
+    "section": "3.6 Part 2: Data Preparation and Exploration",
+    "text": "3.6 Part 2: Data Preparation and Exploration\n\n3.6.1 Data Source\n\nUsing the 2011 ECLS-K dataset for educational achievement.\nData will be prepared and explored using:\n\nR: tidyverse, EdSurvey\nPython: pandas, seaborn\n\n\n\n\n3.6.2 Preprocessing Steps\n\nLoading data and initial exploration.\nHandling missing data using multiple imputation.\nVisualizing growth trajectories by demographic groups.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "nonlinear_intro.html#next-steps",
+    "href": "nonlinear_intro.html#next-steps",
+    "title": "3  Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters",
+    "section": "3.7 Next Steps",
+    "text": "3.7 Next Steps\nThe next section will cover detailed coding examples for Logistic Growth Modeling in both R and Python. Stay tuned!",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Logistic, Gompertz, and Richards Growth Models: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "logistic-growth-R.html",
+    "href": "logistic-growth-R.html",
+    "title": "4  Logistic Growth Modeling: Understanding Theoretical Parameters",
+    "section": "",
+    "text": "4.1 Overview\nThis tutorial focuses on modeling growth curves using the Logistic function, emphasizing the interpretability of theoretical parameters such as the asymptote, inflection point, and growth rate. It builds on the foundational knowledge from the introductory tutorial on nonlinear growth models, with a hands-on approach for implementation in both R (using the brms package) and Python (using PyMC3).",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Logistic Growth Modeling: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "logistic-growth-R.html#objectives",
+    "href": "logistic-growth-R.html#objectives",
+    "title": "4  Logistic Growth Modeling: Understanding Theoretical Parameters",
+    "section": "4.2 Objectives",
+    "text": "4.2 Objectives\n\nUnderstand the functional form and theoretical parameters of the Logistic curve.\nSpecify, fit, and interpret Logistic growth models in R and Python.\nInvestigate differences in growth parameters by demographic groups, including SES, race, and gender.\nCompare models using Bayesian model comparison techniques and evaluate model fit with posterior predictive checks.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Logistic Growth Modeling: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "logistic-growth-R.html#structure-of-the-tutorial",
+    "href": "logistic-growth-R.html#structure-of-the-tutorial",
+    "title": "4  Logistic Growth Modeling: Understanding Theoretical Parameters",
+    "section": "4.3 Structure of the Tutorial",
+    "text": "4.3 Structure of the Tutorial\n\nIntroduction to the Logistic Curve\nModel Specification\nImplementation in R using brms\nImplementation in Python using PyMC3\nParameter Interpretation and Visualization\nModel Comparison and Diagnostics\nExtensions and Advanced Topics\nConclusions and Insights\nReferences and Further Reading",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Logistic Growth Modeling: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "logistic-growth-R.html#requirements",
+    "href": "logistic-growth-R.html#requirements",
+    "title": "4  Logistic Growth Modeling: Understanding Theoretical Parameters",
+    "section": "4.4 Requirements",
+    "text": "4.4 Requirements\n\n4.4.1 R Packages\n\ntidyverse, ggplot2\nbrms, loo, bayesplot, cmdstanr\n\n\n\n4.4.2 Python Packages\n\npandas, numpy, matplotlib, seaborn\npymc3, arviz",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Logistic Growth Modeling: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "logistic-growth-R.html#part-1-introduction-to-the-logistic-curve",
+    "href": "logistic-growth-R.html#part-1-introduction-to-the-logistic-curve",
+    "title": "4  Logistic Growth Modeling: Understanding Theoretical Parameters",
+    "section": "4.5 Part 1: Introduction to the Logistic Curve",
+    "text": "4.5 Part 1: Introduction to the Logistic Curve\n\n4.5.1 Motivation and Context\nThe Logistic growth curve is widely used in modeling growth processes, particularly in educational achievement and cognitive development, where growth accelerates rapidly before slowing as it approaches a maximum level (asymptote). In this context, the Logistic curve helps to understand important developmental milestones, critical periods for intervention, and long-term achievement potential.\n\n\n4.5.2 Functional Form of the Logistic Curve\n\nEquation: ( y(t) = )\nParameters:\n\n( ): Asymptote (Maximum achievement level)\n( ): Growth rate\n( ): Inflection point (Timing of most rapid development)\n\n\n\n\n4.5.3 Interpretability and Theoretical Implications\nThe Logistic curve provides interpretable parameters directly linked to theoretical constructs. For example: - The inflection point indicates the timing of the most rapid change, which can be used to identify critical developmental periods or windows of opportunity for educational interventions. - The asymptote represents the maximum potential achievement level, useful for examining educational disparities by demographic groups.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Logistic Growth Modeling: Understanding Theoretical Parameters</span>"
+    ]
+  },
+  {
+    "objectID": "logistic-growth-R.html#part-2-logistic-growth-model-in-r-using-brms",
+    "href": "logistic-growth-R.html#part-2-logistic-growth-model-in-r-using-brms",
+    "title": "4  Logistic Growth Modeling: Understanding Theoretical Parameters",
+    "section": "4.6 Part 2: Logistic Growth Model in R using brms",
+    "text": "4.6 Part 2: Logistic Growth Model in R using brms\n\n4.6.1 Data Preparation\nTo model the logistic growth curve using the brms package in R, we first need to prepare the data. This example uses the 2011 ECLS-K dataset to examine academic achievement trajectories. We focus on demographic differences by SES, race, and gender.\n\n\n4.6.2 Loading Required Packages\n# Install and load necessary packages\ninstall.packages(c(\"tidyverse\", \"brms\", \"cmdstanr\", \"mice\"))\nlibrary(tidyverse)\nlibrary(brms)\nlibrary(cmdstanr)  # Required backend for brms\nlibrary(mice)  # For multiple imputation of missing data\n\n\n4.6.3 Data Preparation and Exploration\n# Load the dataset\n# Assume the dataset is saved as 'eclsk_data.csv'\ndata &lt;- read_csv('eclsk_data.csv')\n\n# Explore the data\nstr(data)\nsummary(data)\n\n# Subset relevant variables\nselected_vars &lt;- c(\"childid\", \"race\", \"sex\", \"ses\", \"age_entry\", \"age_test\", \"math_score\")\ndata_subset &lt;- data[, selected_vars]\n\n# Handle missing data using multiple imputation\nimp_data &lt;- mice(data_subset, m = 5, method = 'pmm', maxit = 50, seed = 123)\n\n\n4.6.4 Specifying the Logistic Growth Model\nThe logistic growth model is specified using a custom non-linear formula:\nlogistic_formula &lt;- bf(\n  math_score ~ alpha / (1 + exp(-beta * (age_test - gamma))),\n  alpha ~ 1 + race + sex + ses + age_entry,\n  beta ~ 1 + race + sex + ses,\n  gamma ~ 1 + race + sex + ses,\n  nl = TRUE\n)\n\n# Priors for interpretability\nlogistic_priors &lt;- c(\n  prior(normal(0, 10), nlpar = \"alpha\"),\n  prior(normal(0, 1), nlpar = \"beta\"),\n  prior(normal(0, 10), nlpar = \"gamma\")\n)\n\n\n4.6.5 Fitting the Model\n# Fit the model using brms\nfit_logistic &lt;- brm(\n  formula = logistic_formula,\n  data = complete(imp_data, action = 1),  # Use first imputed dataset\n  family = gaussian(),\n  prior = logistic_priors,\n  chains = 4,\n  iter = 4000,\n  cores = 4,\n  seed = 123\n)\n\n\n4.6.6 Model Diagnostics and Posterior Checks\n# Model summary\nsummary(fit_logistic)\n\n# Trace plots for convergence diagnostics\nplot(fit_logistic)\n\n# Posterior predictive checks\npp_check(fit_logistic)\n\n\n4.6.7 Interpretation of Parameters\n\nAlpha (Asymptote): Maximum achievement level.\nBeta (Growth Rate): Speed of development.\nGamma (Inflection Point): Timing of most rapid growth.\n\n\n\n4.6.8 Next Steps\nThe next section will cover implementation of the Logistic Growth Model in Python using PyMC3. Stay tuned! The next section will cover detailed coding examples for implementing the Logistic Growth Model in R using the brms package. Stay tuned!",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Logistic Growth Modeling: Understanding Theoretical Parameters</span>"
+    ]
+  }
+]

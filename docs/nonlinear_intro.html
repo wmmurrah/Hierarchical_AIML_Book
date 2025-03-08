@@ -289,20 +289,11 @@ window.Quarto = {
 </section>
 <section id="research-questions" class="level3" data-number="3.5.2">
 <h3 data-number="3.5.2" class="anchored" data-anchor-id="research-questions"><span class="header-section-number">3.5.2</span> Research Questions</h3>
-<p>This chapter is motivated by the following research questions:<br>
-- How do academic achievement trajectories differ by SES and race?<br>
-- Are there gender differences in academic achievement trajectories?<br>
-- How do academic achievement trajectories differ by SES and race?<br>
-- When do the most rapid changes in academic achievement occur for different demographic groups?<br>
-- Do students from different SES or racial backgrounds reach different levels of achievement asymptotically?</p>
+<p>This chapter is motivated by the following research questions: - How do academic achievement trajectories differ by SES and race? - Are there gender differences in academic achievement trajectories? - How do academic achievement trajectories differ by SES and race? - When do the most rapid changes in academic achievement occur for different demographic groups? - Do students from different SES or racial backgrounds reach different levels of achievement asymptotically?</p>
 </section>
 <section id="why-use-functional-form-models" class="level3" data-number="3.5.3">
 <h3 data-number="3.5.3" class="anchored" data-anchor-id="why-use-functional-form-models"><span class="header-section-number">3.5.3</span> Why Use Functional Form Models?</h3>
-<p>Functional form models such as logistic, Gompertz, and Richards curves provide a powerful framework for examining these research questions. Unlike more flexible machine learning models, functional form models are interpretable, with parameters directly linked to theoretical constructs:<br>
-- <strong>Inflection Point</strong>: The timing of the most rapid change, indicating critical periods for intervention.<br>
-- <strong>Asymptote</strong>: The maximum achievement level, highlighting disparities in long-term educational outcomes.<br>
-- <strong>Growth Rate</strong>: The speed of academic progress, providing insights into the effectiveness of educational environments.<br>
-- <strong>Shape Parameter (Richards Curve)</strong>: Captures asymmetry in growth, potentially revealing differences in early vs.&nbsp;late acceleration of achievement.</p>
+<p>Functional form models such as logistic, Gompertz, and Richards curves provide a powerful framework for examining these research questions. Unlike more flexible machine learning models, functional form models are interpretable, with parameters directly linked to theoretical constructs: - <strong>Inflection Point</strong>: The timing of the most rapid change, indicating critical periods for intervention. - <strong>Asymptote</strong>: The maximum achievement level, highlighting disparities in long-term educational outcomes. - <strong>Growth Rate</strong>: The speed of academic progress, providing insights into the effectiveness of educational environments. - <strong>Shape Parameter (Richards Curve)</strong>: Captures asymmetry in growth, potentially revealing differences in early vs.&nbsp;late acceleration of achievement.</p>
 </section>
 <section id="theoretical-and-practical-implications" class="level3" data-number="3.5.4">
 <h3 data-number="3.5.4" class="anchored" data-anchor-id="theoretical-and-practical-implications"><span class="header-section-number">3.5.4</span> Theoretical and Practical Implications</h3>
@@ -327,16 +318,10 @@ window.Quarto = {
 <section id="the-logistic-curve" class="level3" data-number="3.5.8">
 <h3 data-number="3.5.8" class="anchored" data-anchor-id="the-logistic-curve"><span class="header-section-number">3.5.8</span> The Logistic Curve</h3>
 <ul>
-<li>Equation:</li>
-</ul>
-<p><span class="math display">\[
-y(t) = \frac{\alpha}{1 + \exp(-\beta (t - \gamma))}
-\]</span></p>
-<ul>
+<li>Equation: <span class="math inline">\(y(t) = \frac{\alpha}{1 + \exp(-\beta (t - \gamma))}\)</span></li>
 <li>Parameters:
 <ul>
-<li><span class="math inline">\(\alpha\)</span>: Asymptote (Maximum achievement level)<br>
-</li>
+<li><span class="math inline">\(\alpha\)</span>: Asymptote (Maximum achievement level)</li>
 <li><span class="math inline">\(\beta\)</span>: Growth rate</li>
 <li><span class="math inline">\(\gamma\)</span>: Inflection point (Timing of most rapid development)</li>
 </ul></li>
@@ -345,12 +330,7 @@ y(t) = \frac{\alpha}{1 + \exp(-\beta (t - \gamma))}
 <section id="the-gompertz-curve" class="level3" data-number="3.5.9">
 <h3 data-number="3.5.9" class="anchored" data-anchor-id="the-gompertz-curve"><span class="header-section-number">3.5.9</span> The Gompertz Curve</h3>
 <ul>
-<li>Equation:</li>
-</ul>
-<p><span class="math display">\[
-y(t) = \alpha \exp(-\exp(-\beta (t - \gamma)))
-\]</span></p>
-<ul>
+<li>Equation: <span class="math inline">\(y(t) = \alpha \exp(-\exp(-\beta (t - \gamma)))\)</span></li>
 <li>Parameters:
 <ul>
 <li><span class="math inline">\(\alpha\)</span>: Asymptote</li>
@@ -362,10 +342,8 @@ y(t) = \alpha \exp(-\exp(-\beta (t - \gamma)))
 <section id="the-richards-curve" class="level3" data-number="3.5.10">
 <h3 data-number="3.5.10" class="anchored" data-anchor-id="the-richards-curve"><span class="header-section-number">3.5.10</span> The Richards Curve</h3>
 <ul>
-<li><p>Equation: <span class="math display">\[
-y(t) = \frac{\alpha}{(1 + \delta \exp(-\beta (t - \gamma)))^{\frac{1}{\delta}}}
-\]</span></p></li>
-<li><p>Parameters:</p>
+<li>Equation: <span class="math inline">\(y(t) = \frac{\alpha}{\left(1 + \delta \exp(-\beta (t - \gamma))\right)^{\frac{1}{\delta}}}\)</span></li>
+<li>Parameters:
 <ul>
 <li><span class="math inline">\(\alpha\)</span>: Asymptote</li>
 <li><span class="math inline">\(\beta\)</span>: Growth rate</li>
